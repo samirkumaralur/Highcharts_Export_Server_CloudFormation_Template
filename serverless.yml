@@ -1,0 +1,20 @@
+service: phantomJs-service
+
+frameworkVersion: ">=1.1.0 <2.5.0"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  phantomJsService:
+    handler: index.handler
+    memorySize: 1028
+    description: Get the Base 64 Image of the high chart from the Phantomjs service
+    events:
+      - http:
+          path: getBase64OfImage 
+          method: post
+          statusCode: 200
